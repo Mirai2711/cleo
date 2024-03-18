@@ -3,9 +3,15 @@ from dotenv import load_dotenv
 from memory import add_user_question_and_answer
 from remember import fetch_user_data
 from voice import text_to_speech
+import streamlit as st
 load_dotenv()
 ##
-client = OpenAI()
+
+openai_key = st.secrets("OPENAI_API_KEY")
+
+
+client = OpenAI(openai_key)
+
 
 def ask_cleopatra(user_question, user_name):
 

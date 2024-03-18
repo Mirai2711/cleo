@@ -2,10 +2,11 @@ import requests
 import json
 from dotenv import load_dotenv
 import os
+import streamlit as st
 
 
 load_dotenv()
-supabase_key = os.getenv("SUPABASE_KEY")
+supabase_key = st.secrets("SUPABASE_KEY")
 
 
 def add_user_question_and_answer(user_name, question, answer):
