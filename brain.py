@@ -58,17 +58,22 @@ def convert_context_to_gpt_format(context_history):
 
     # Iterate through each entry in the context history
     for entry in context_history:
+        # Check and log the type of each entry
+        if not isinstance(entry, dict):
+            print(f"Invalid entry found: {entry}, type: {type(entry)}")
+            continue  # Skip this iteration
+
         # Convert the user question part
         user_message = {
             "role": "user",
-            "content": entry['user_question']
+            "content": entry.get('user_question', '')
         }
         gpt_formatted_messages.append(user_message)
 
         # Convert the GPT answer part
         gpt_message = {
             "role": "assistant",
-            "content": entry['gpt_answer']
+            "content": entry.get('gpt_answer', '')
         }
         gpt_formatted_messages.append(gpt_message)
 
