@@ -62,7 +62,7 @@ def main():
         question = st.text_input("Ask your question here", help="Type your question here")
 
     # A button to submit the question
-    if st.button("Submit"):
+    if question:
         bot_response, audio_output = ask_cleopatra(user_question=question, user_name=name)
         # Display the answer in a styled text area
         st.text_area("Answer:", value=bot_response)
