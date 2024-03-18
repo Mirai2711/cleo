@@ -24,7 +24,6 @@ def add_user_question_and_answer(user_name, question, answer):
     }
 
     response = requests.post(url, data=json.dumps(payload), headers=headers)
-    print(response.json())
 
     if response.status_code == 200 or response.status_code == 201:
         print("Data added successfully.")
