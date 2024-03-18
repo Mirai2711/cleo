@@ -2,3 +2,5 @@ openai
 python-dotenv
 supabase
 streamlit
+st_audiorec
+
