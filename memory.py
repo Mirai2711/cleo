@@ -5,8 +5,8 @@ import os
 import streamlit as st
 
 
-load_dotenv()
 supabase_key = st.secrets("SUPABASE_KEY")
+print(supabase_key)
 
 
 def add_user_question_and_answer(user_name, question, answer):
