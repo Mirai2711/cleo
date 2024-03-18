@@ -41,7 +41,7 @@ def main():
 
     st.title("Cleo")
 
-    st.text_area("This is cleo. You can talk to any famous person through cleo. First tell cleo which person she should be, and have a conversation with her")
+    st.text_area("Intro", "This is cleo. You can talk to any famous person through cleo. First tell cleo which person she should be, and have a conversation with her")
 
     # Field for entering a name
     name = st.text_input("Hello, what's your name?:", help="Type your name here")
