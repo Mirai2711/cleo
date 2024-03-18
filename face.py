@@ -6,11 +6,6 @@ from audio_recorder_streamlit import audio_recorder
 
 def main():
     st.set_page_config(page_title="Cleo", layout="wide")
-
-
-
-
-    # Use st.markdown and some HTML/CSS to inject a simple background
     background_style = """
     <style>
     .stApp {
@@ -44,28 +39,18 @@ def main():
 
     st.text_area("Intro", "This is cleo. You can talk to any famous person through cleo. First tell cleo which person she should be, and have a conversation with her")
 
-    # Field for entering a name
     name = st.text_input("Hello, what's your name?:", help="Type your name here")
 
-    # Field for typing and speaking questions
-
-    #wav_audio_data = st_audiorec()
-    audio_bytes = audio_recorder()
+    voice_from_the_user = audio_recorder()
 
     question_from_audio = ""
 
-    if audio_bytes is not None:
-        question_from_audio = transcribe_audio(audio_bytes)
+    if voice_from_the_user is not None:
+        question_from_audio = transcribe_audio(voice_from_the_user)
         print(question_from_audio)
         st.text_area("transcription", question_from_audio)
-
-    if question_from_audio:
         question = question_from_audio
-    else:
-        question = st.text_input("Ask your question here", help="Type your question here")
-
-    # A button to submit the question
-    if question:
+        #question = st.text_input("Ask your question here", help="Type your question here")
         bot_response, audio_output = ask_cleopatra(user_question=question, user_name=name)
         # Display the answer in a styled text area
         st.text_area("Answer:", value=bot_response)
