@@ -45,16 +45,16 @@ def main():
 
     question_from_audio = ""
 
-    #if voice_from_the_user is not None:
-    question_from_audio = transcribe_audio(voice_from_the_user)
-    print(question_from_audio)
-    st.text_area("transcription", question_from_audio)
-    question = question_from_audio
-    #question = st.text_input("Ask your question here", help="Type your question here")
-    bot_response, audio_output = ask_cleopatra(user_question=question, user_name=name)
-    st.text_area("Answer:", value=bot_response)
-    with open(audio_output, 'rb') as audio_file:
-        st.audio(audio_file, format='audio/mp3')
+    if voice_from_the_user is not None:
+        question_from_audio = transcribe_audio(voice_from_the_user)
+        print(question_from_audio)
+        st.text_area("transcription", question_from_audio)
+        question = question_from_audio
+        #question = st.text_input("Ask your question here", help="Type your question here")
+        bot_response, audio_output = ask_cleopatra(user_question=question, user_name=name)
+        st.text_area("Answer:", value=bot_response)
+        with open(audio_output, 'rb') as audio_file:
+            st.audio(audio_file, format='audio/mp3')
 
 if __name__ == "__main__":
     main()
