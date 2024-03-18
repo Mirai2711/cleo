@@ -41,21 +41,20 @@ def main():
 
     name = st.text_input("Hello, what's your name?:", help="Type your name here")
 
-    voice_from_the_user = audio_recorder()
+    voice_from_the_user = audio_recorder(text="Send a voice message to ask a question", icon_size="2x")
 
     question_from_audio = ""
 
-    if voice_from_the_user is not None:
-        question_from_audio = transcribe_audio(voice_from_the_user)
-        print(question_from_audio)
-        st.text_area("transcription", question_from_audio)
-        question = question_from_audio
-        #question = st.text_input("Ask your question here", help="Type your question here")
-        bot_response, audio_output = ask_cleopatra(user_question=question, user_name=name)
-        # Display the answer in a styled text area
-        st.text_area("Answer:", value=bot_response)
-        with open(audio_output, 'rb') as audio_file:
-            st.audio(audio_file, format='audio/mp3')
+    #if voice_from_the_user is not None:
+    question_from_audio = transcribe_audio(voice_from_the_user)
+    print(question_from_audio)
+    st.text_area("transcription", question_from_audio)
+    question = question_from_audio
+    #question = st.text_input("Ask your question here", help="Type your question here")
+    bot_response, audio_output = ask_cleopatra(user_question=question, user_name=name)
+    st.text_area("Answer:", value=bot_response)
+    with open(audio_output, 'rb') as audio_file:
+        st.audio(audio_file, format='audio/mp3')
 
 if __name__ == "__main__":
     main()
