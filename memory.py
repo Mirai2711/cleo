@@ -5,7 +5,7 @@ import os
 import streamlit as st
 
 
-supabase_key = st.secrets("SUPABASE_KEY")
+supabase_key = st.secrets["SUPABASE_KEY"]
 print(supabase_key)
 
 
