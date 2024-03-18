@@ -3,4 +3,5 @@ python-dotenv
 supabase
 streamlit
 streamlit_audiorec
+audio-recorder-streamlit
 

@@ -2,6 +2,7 @@ import streamlit as st
 from brain import ask_cleopatra
 from st_audiorec import st_audiorec
 from voice import transcribe_audio
+from audio_recorder_streamlit import audio_recorder
 
 def main():
     st.set_page_config(page_title="Cleo", layout="wide")
@@ -48,11 +49,13 @@ def main():
 
     # Field for typing and speaking questions
 
-    wav_audio_data = st_audiorec()
+    #wav_audio_data = st_audiorec()
+    audio_bytes = audio_recorder()
+
     question_from_audio = ""
 
-    if wav_audio_data is not None:
-        question_from_audio = transcribe_audio(wav_audio_data)
+    if audio_bytes is not None:
+        question_from_audio = transcribe_audio(audio_bytes)
         print(question_from_audio)
         st.text_area("transcription", question_from_audio)
 
